@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ChouseisanCSVDownloader</string>
+
+    <string name="hint_text1">●イベントIDを入力して設定ボタンを押下すると毎日0:00にCSVダウンロードが実行される。</string>
+    <string name="hint_text2">●イベントIDを空にして設定ボタンを押下するとCSVダウンロード実行は解除される。</string>
+
+    <string name="status_text_label">ステータス：</string>
+    <string name="status_text_default">No status</string>
+
+    <string name="edit_text_hint">イベントID</string>
+
+    <string name="set_button_label">設定</string>
+
+    <string name="pref_key_event_id">pk_event_id</string>
+
+    <string name="msg_completed_scheduling_start">スケジューリングされました。</string>
+    <string name="msg_completed_scheduling_stop">スケジューリングが解除されました。</string>
+</resources>
