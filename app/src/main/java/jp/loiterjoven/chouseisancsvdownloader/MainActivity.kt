@@ -1,7 +1,10 @@
 package jp.loiterjoven.chouseisancsvdownloader
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
@@ -38,6 +41,39 @@ class MainActivity : AppCompatActivity() {
             } else {
                 // 入力がある場合
                 startWork(inputText)
+            }
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            // パーミッション要求をする
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), Constant.PERMISSION_REQUEST_CODE)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            Constant.PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isEmpty()) {
+                    Toast.makeText(applicationContext, getString(R.string.msg_finish_empty_permission), Toast.LENGTH_LONG).show()
+                    Handler().postDelayed(Runnable {
+                        android.os.Process.killProcess(android.os.Process.myPid())
+                    }, 3000)
+                }
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(applicationContext, getString(R.string.msg_permission_granted), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, getString(R.string.msg_finish_empty_permission), Toast.LENGTH_LONG).show()
+                    Handler().postDelayed(Runnable {
+                        android.os.Process.killProcess(android.os.Process.myPid())
+                    }, 3000)
+                }
             }
         }
     }

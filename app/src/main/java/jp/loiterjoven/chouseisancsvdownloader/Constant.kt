@@ -3,6 +3,8 @@ package jp.loiterjoven.chouseisancsvdownloader
 object Constant {
     const val LOG_TAG = "CHOSEISAN_CSV_DL"
 
+    const val PERMISSION_REQUEST_CODE = 1001
+
     const val CHOSEISAN_HOST = "https://chouseisan.com/"
     const val CHOSEISAN_CSV_DL_PATH = "schedule/List/createCsv"
     const val CHOSEISAN_PATH_PARAM_EVENT_ID = "h"

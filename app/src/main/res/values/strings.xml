@@ -15,4 +15,6 @@
 
     <string name="msg_completed_scheduling_start">スケジューリングされました。</string>
     <string name="msg_completed_scheduling_stop">スケジューリングが解除されました。</string>
+    <string name="msg_finish_empty_permission">権限が無いため終了します。</string>
+    <string name="msg_permission_granted">権限が付与されました。</string>
 </resources>
